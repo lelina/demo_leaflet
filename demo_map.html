@@ -29,13 +29,9 @@
     })
 
     $.getJSON($('link[rel="FeatureCollection"]').attr("href"), function(data) {
-        let geojson = L.geoJson(data, {
-            onEachFeature: function (feature, layer) {
-                layer.bindPopup(feature.properties.name);
-            }
-        });
+        let geojson = L.geoJson(data);
         let map = L.map('demo-map').fitBounds(geojson.getBounds());
-        cupcakeTiles.addTo(map);
+        mapTiles.addTo(map);
         geojson.addTo(map);
     });
 </script>
